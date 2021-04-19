@@ -1,0 +1,8 @@
+application:
+  version: '@project.version@'
+  locale-name:
+  questions-file: questions-with-answers.csv
+
+spring:
+  messages:
+    basename: i18n/messages
