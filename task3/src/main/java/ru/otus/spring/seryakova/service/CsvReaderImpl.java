@@ -10,14 +10,12 @@ import java.io.InputStream;
 import java.util.Collection;
 
 @Component
-public class CsvLoaderImpl implements CsvLoader {
+public class CsvReaderImpl implements CsvReader {
 
     private static final CsvMapper csvMapper = new CsvMapper();
 
     @Override
-    public <T> Collection<T> read(Class<T> clazz, String fileName) throws IOException {
-        ClassLoader classLoader = getClass().getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(fileName);
+    public <T> Collection<T> read(Class<T> clazz, InputStream inputStream) throws IOException {
         CsvSchema schema = csvMapper.schemaFor(clazz).withHeader().withColumnReordering(true);
         ObjectReader reader = csvMapper.readerFor(clazz).with(schema);
         return reader.<T>readValues(inputStream).readAll();
