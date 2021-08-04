@@ -1,0 +1,11 @@
+application:
+  version: '@project.version@'
+  locale-name: ru-RU
+  questions-file: questions.csv
+
+spring:
+  messages:
+    basename: i18n/messages
+  shell:
+    interactive:
+      enabled: false
